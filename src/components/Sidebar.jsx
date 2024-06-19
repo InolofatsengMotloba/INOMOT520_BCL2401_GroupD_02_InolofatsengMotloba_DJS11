@@ -27,6 +27,7 @@ const Flex = styled.div`
 `;
 
 const Logo = styled.div`
+  width: 100%;
   color: ${({ theme }) => theme.primary};
   display: flex;
   align-items: center;
@@ -37,9 +38,31 @@ const Logo = styled.div`
   margin: 16px 0px;
 `;
 
-const Close = styled.div``;
-const Elements = styled.div``;
-const NavText = styled.div``;
+const Close = styled.div`
+  display: none;
+  @media (max-width: 1100px) {
+    display: block;
+  }
+`;
+
+const Elements = styled.div`
+  padding: 4px 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  color: ${({ theme }) => theme.text_secondary};
+  width: 100%;
+  &:hover {
+    background-color: ${({ theme }) => theme.text_secondary};
+  }
+`;
+
+const NavText = styled.div`
+  padding: 20px 0px;
+`;
 
 const Sidebar = () => {
   return (
