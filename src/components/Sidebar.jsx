@@ -18,25 +18,26 @@ const MenuContainer = styled.div`
   display: flex;
   background-color: ${({ theme }) => theme.bg};
   color: ${({ theme }) => theme.text_primary};
-  // @media (max-width: 1100px) {
-  //   position: fixed;
-  //   z-index: 1000;
-  //   width: 100%;
-  //   max-width: 250px;
-  //   left: ${({ setMenuOpen }) => (setMenuOpen ? "0" : "-100%")};
-  //   transition: 0.3s ease-in-out;
-  // }
+  @media (max-width: 1100px) {
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    max-width: 250px;
+    left: ${({ menuOpen }) => (menuOpen ? "0" : "-100%")};
+    transition: 0.3s ease-in-out;
+  }
 `;
 
 const Flex = styled.div`
+  width: 100;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 0px 12px;
 `;
 
 const Logo = styled.div`
-  width: 100%;
   color: ${({ theme }) => theme.primary};
   display: flex;
   align-items: center;
@@ -80,11 +81,11 @@ const NavText = styled.div`
 const HR = styled.div`
   width: 100%;
   height: 1px;
-  background-color: ${({ theme }) => theme.text_secondary};
+  background-color: ${({ theme }) => theme.text_secondary + 50};
   margin: 10px 0px;
 `;
 
-const Sidebar = ({ setMenuOpen, setDarkMode, darkMode }) => {
+const Sidebar = ({ menuOpen, setMenuOpen, setDarkMode, darkMode }) => {
   const menuItems = [
     {
       link: "/",
@@ -112,13 +113,13 @@ const Sidebar = ({ setMenuOpen, setDarkMode, darkMode }) => {
   ];
 
   return (
-    <MenuContainer>
+    <MenuContainer menuOpen={menuOpen}>
       <Flex>
         <Logo>
           {/* <Image src={LogoImage} /> */}
           iListen
         </Logo>
-        <Close>
+        <Close onClick={() => setMenuOpen(false)}>
           <CloseRounded />
         </Close>
       </Flex>

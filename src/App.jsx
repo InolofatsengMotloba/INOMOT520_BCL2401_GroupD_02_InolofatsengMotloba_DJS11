@@ -28,7 +28,8 @@ function App() {
       <BrowserRouter>
         <Container>
           <Sidebar
-            setMenuOpen={setDarkMode}
+            menuOpen={menuOpen}
+            setMenuOpen={setMenuOpen}
             setDarkMode={setDarkMode}
             darkMode={darkMode}
           />
