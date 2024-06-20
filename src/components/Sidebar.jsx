@@ -5,6 +5,7 @@ import {
   CloseRounded,
   SearchRounded,
   FavoriteRounded,
+  LightModeRounded,
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 // import LogoImage from "../images/Logo.png";
@@ -100,6 +101,14 @@ const menuItems = [
   },
 ];
 
+const button = [
+  {
+    fun: () => console.log("LightMode"),
+    name: "Light Mode",
+    icon: <LightModeRounded />,
+  },
+];
+
 const Sidebar = () => {
   return (
     <MenuContainer>
@@ -121,6 +130,12 @@ const Sidebar = () => {
         </Link>
       ))}
       <HR />
+      {button.map((item) => (
+        <Elements onClick={item.fun}>
+          {item.icon}
+          <NavText>{item.name}</NavText>
+        </Elements>
+      ))}
     </MenuContainer>
   );
 };
