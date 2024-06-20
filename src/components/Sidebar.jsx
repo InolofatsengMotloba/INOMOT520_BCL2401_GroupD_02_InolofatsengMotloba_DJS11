@@ -122,7 +122,7 @@ const Sidebar = () => {
         </Close>
       </Flex>
       {menuItems.map((item) => (
-        <Link to="/">
+        <Link to={item.link} style={{ textDecoration: "none" }}>
           <Elements>
             {item.icon}
             <NavText>{item.name}</NavText>
