@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import styled, { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./utils/Themes";
-import Sidebar from "./components/Sidebar";
+import Sidebar from "./components/SideBar";
+import NavBar from "./components/NavBar";
 
 const Container = styled.div`
   display: flex;
@@ -27,13 +28,18 @@ function App() {
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <BrowserRouter>
         <Container>
-          <Sidebar
-            menuOpen={menuOpen}
-            setMenuOpen={setMenuOpen}
-            setDarkMode={setDarkMode}
-            darkMode={darkMode}
-          />
-          <Frame>iListen</Frame>
+          {menuOpen && (
+            <Sidebar
+              menuOpen={menuOpen}
+              setMenuOpen={setMenuOpen}
+              setDarkMode={setDarkMode}
+              darkMode={darkMode}
+            />
+          )}
+          <Frame>
+            <NavBar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+            iListen
+          </Frame>
         </Container>
       </BrowserRouter>
     </ThemeProvider>
