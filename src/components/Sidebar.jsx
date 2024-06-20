@@ -61,7 +61,7 @@ const Elements = styled.div`
   color: ${({ theme }) => theme.text_secondary};
   width: 100%;
   &:hover {
-    background-color: ${({ theme }) => theme.text_secondary};
+    background-color: ${({ theme }) => theme.text_secondary + 50};
   }
 `;
 
