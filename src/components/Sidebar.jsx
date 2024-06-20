@@ -4,7 +4,7 @@ import {
   HomeRounded,
   CloseRounded,
   SearchRounded,
-  FavoriteRounded,,
+  FavoriteRounded,
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 // import LogoImage from "../images/Logo.png";
@@ -75,6 +75,13 @@ const NavText = styled.div`
   padding: 20px 0px;
 `;
 
+const HR = styled.div`
+  width: 100%;
+  height: 1px;
+  background-color: ${({ theme }) => theme.text_secondary};
+  margin: 10px 0px;
+`;
+
 const menuItems = [
   {
     link: "/",
@@ -113,6 +120,7 @@ const Sidebar = () => {
           </Elements>
         </Link>
       ))}
+      <HR />
     </MenuContainer>
   );
 };
