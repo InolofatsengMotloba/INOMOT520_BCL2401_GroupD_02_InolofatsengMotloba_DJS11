@@ -1,11 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { PodcastCard } from "../components/PodcastCard";
 
 const DashboardMain = styled.div`
   padding: 20px 30px;
   padding-bottom: 200px;
   height: 100%;
+  overflow-x: hidden;
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
@@ -44,7 +46,16 @@ const Span = styled.div`
   }
 `;
 
-const Podcasts = styled.div``;
+const Podcasts = styled.div`
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 18px 6px;
+  @media (max-width: 550px) {
+    justify-content: center;
+  }
+`;
 
 export const Dashboard = () => {
   return (
@@ -59,7 +70,11 @@ export const Dashboard = () => {
             <Span>Show All</Span>
           </Link>
         </Topic>
-        <Podcasts>Hi</Podcasts>
+        <Podcasts>
+          <PodcastCard />
+          <PodcastCard />
+          <PodcastCard />
+        </Podcasts>
       </FilterContainer>
 
       <FilterContainer>
@@ -72,7 +87,11 @@ export const Dashboard = () => {
             <Span>Show All</Span>
           </Link>
         </Topic>
-        <Podcasts>Hi</Podcasts>
+        <Podcasts>
+          <PodcastCard />
+          <PodcastCard />
+          <PodcastCard />
+        </Podcasts>
       </FilterContainer>
     </DashboardMain>
   );
