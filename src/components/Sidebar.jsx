@@ -6,6 +6,7 @@ import {
   SearchRounded,
   FavoriteRounded,
   LightModeRounded,
+  DarkModeRounded,
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 // import LogoImage from "../images/Logo.png";
@@ -17,14 +18,14 @@ const MenuContainer = styled.div`
   display: flex;
   background-color: ${({ theme }) => theme.bg};
   color: ${({ theme }) => theme.text_primary};
-  //   @media (max-width: 1100px) {
-  //     position: fixed;
-  //     z-index: 1000;
-  //     width: 100%;
-  //     max-width: 250px;
-  //     left: ${({ setMenuOpen }) => (setMenuOpen ? "0" : "-100%")};
-  //     transition: 0.3s ease-in-out;
-  //   }
+  // @media (max-width: 1100px) {
+  //   position: fixed;
+  //   z-index: 1000;
+  //   width: 100%;
+  //   max-width: 250px;
+  //   left: ${({ setMenuOpen }) => (setMenuOpen ? "0" : "-100%")};
+  //   transition: 0.3s ease-in-out;
+  // }
 `;
 
 const Flex = styled.div`
@@ -83,33 +84,33 @@ const HR = styled.div`
   margin: 10px 0px;
 `;
 
-const menuItems = [
-  {
-    link: "/",
-    name: "Dashboard",
-    icon: <HomeRounded />,
-  },
-  {
-    link: "/search",
-    name: "Search",
-    icon: <SearchRounded />,
-  },
-  {
-    link: "/favourites",
-    name: "Favourites",
-    icon: <FavoriteRounded />,
-  },
-];
+const Sidebar = ({ setMenuOpen, setDarkMode, darkMode }) => {
+  const menuItems = [
+    {
+      link: "/",
+      name: "Dashboard",
+      icon: <HomeRounded />,
+    },
+    {
+      link: "/search",
+      name: "Search",
+      icon: <SearchRounded />,
+    },
+    {
+      link: "/favourites",
+      name: "Favourites",
+      icon: <FavoriteRounded />,
+    },
+  ];
 
-const button = [
-  {
-    fun: () => console.log("LightMode"),
-    name: "Light Mode",
-    icon: <LightModeRounded />,
-  },
-];
+  const button = [
+    {
+      fun: () => setDarkMode(!darkMode),
+      name: darkMode ? "Light Mode" : "Dark Mode",
+      icon: darkMode ? <LightModeRounded /> : <DarkModeRounded />,
+    },
+  ];
 
-const Sidebar = () => {
   return (
     <MenuContainer>
       <Flex>

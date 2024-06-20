@@ -21,14 +21,18 @@ const Frame = styled.div`
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(true);
 
   return (
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <BrowserRouter>
         <Container>
-          <Sidebar />
-          <Frame />
-          iListen
+          <Sidebar
+            setMenuOpen={setDarkMode}
+            setDarkMode={setDarkMode}
+            darkMode={darkMode}
+          />
+          <Frame>iListen</Frame>
         </Container>
       </BrowserRouter>
     </ThemeProvider>
