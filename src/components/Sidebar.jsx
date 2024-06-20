@@ -1,6 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import { HomeRounded, CloseRounded } from "@mui/icons-material";
+import {
+  HomeRounded,
+  CloseRounded,
+  SearchRounded,
+  FavoriteRounded,,
+} from "@mui/icons-material";
+import { Link } from "react-router-dom";
 // import LogoImage from "../images/Logo.png";
 
 const MenuContainer = styled.div`
@@ -69,6 +75,24 @@ const NavText = styled.div`
   padding: 20px 0px;
 `;
 
+const menuItems = [
+  {
+    link: "/",
+    name: "Dashboard",
+    icon: <HomeRounded />,
+  },
+  {
+    link: "/search",
+    name: "Search",
+    icon: <SearchRounded />,
+  },
+  {
+    link: "/favourites",
+    name: "Favourites",
+    icon: <FavoriteRounded />,
+  },
+];
+
 const Sidebar = () => {
   return (
     <MenuContainer>
@@ -81,11 +105,14 @@ const Sidebar = () => {
           <CloseRounded />
         </Close>
       </Flex>
-
-      <Elements>
-        <HomeRounded />
-        <NavText>Dashboard</NavText>
-      </Elements>
+      {menuItems.map((item) => (
+        <Link to="/">
+          <Elements>
+            {item.icon}
+            <NavText>{item.name}</NavText>
+          </Elements>
+        </Link>
+      ))}
     </MenuContainer>
   );
 };

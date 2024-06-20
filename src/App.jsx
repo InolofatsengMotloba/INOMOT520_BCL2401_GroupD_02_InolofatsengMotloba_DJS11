@@ -18,10 +18,12 @@ function App() {
 
   return (
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
-      <Container>
-        <Sidebar />
-        iListen
-      </Container>
+      <BrowserRouter>
+        <Container>
+          <Sidebar />
+          iListen
+        </Container>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }
