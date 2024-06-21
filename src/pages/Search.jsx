@@ -4,6 +4,9 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import { Category } from "../utils/Data";
 import { DefaultCard } from "../components/DefaultCard";
 import { Link } from "react-router-dom";
+import { CircularProgress } from "@mui/material";
+import TopResult from "../components/TopResult";
+import MoreResult from "../components/MoreResult";
 
 const Searchmain = styled.div`
   padding: 20px 30px;
@@ -48,11 +51,36 @@ const BrowseAll = styled.div`
   padding: 14px;
 `;
 
+const Loader = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+`;
+
+const OtherResults = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 700px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  gap: 6px;
+  padding: 4px 4px;
+  @media (max-width: 768px) {
+    height: 100%;
+    padding: 4px 0px;
+  }
+`;
+
 export const Search = () => {
   const [searched, setSearched] = useState("");
+  const [searchedPodcasts, setSearchedPodcasts] = useState([1, 2, 3, 4, 5, 6]);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = async (e) => {
     setSearched(e.target.value);
+    setLoading(true);
   };
 
   return (
@@ -74,14 +102,38 @@ export const Search = () => {
           <Heading>Browse All</Heading>
           <BrowseAll>
             {Category.map((category) => (
-              <Link to={`/showpodcasts/${category.name.toLowerCase}`} className="podcastLink">
+              <Link
+                to={`/showpodcasts/${category.name.toLowerCase}`}
+                className="podcastLink"
+              >
                 <DefaultCard category={category} />
               </Link>
             ))}
           </BrowseAll>
         </Categories>
       ) : (
-        <>Hi</>
+        <>
+          {loading ? (
+            <Loader>
+              <CircularProgress />
+            </Loader>
+          ) : (
+            <>
+              {searchedPodcasts.length === 0 ? (
+                <>No Podcasts Found</>
+              ) : (
+                <>
+                  <TopResult />
+                  <OtherResults>
+                    {searchedPodcasts.map((podcasts) => (
+                      <MoreResult podcasts={podcasts} />
+                    ))}
+                  </OtherResults>
+                </>
+              )}
+            </>
+          )}
+        </>
       )}
     </Searchmain>
   );

@@ -9,7 +9,7 @@ import {
   DarkModeRounded,
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-// import LogoImage from "../images/Logo.png";
+import LogoImage from "../images/Icon.png";
 
 const MenuContainer = styled.div`
   flex: 0.5;
@@ -29,12 +29,12 @@ const MenuContainer = styled.div`
 `;
 
 const Flex = styled.div`
-  width: 100;
   display: flex;
-  flex-direction: row;
+  // flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 0px 12px;
+  padding: 0px 16px;
+  width: 86%;
 `;
 
 const Logo = styled.div`
@@ -48,9 +48,9 @@ const Logo = styled.div`
   margin: 16px 0px;
 `;
 
-// const Image = styled.img`
-//   height: 40px;
-// `;
+const Image = styled.img`
+  height: 40px;
+`;
 
 const Close = styled.div`
   display: none;
@@ -63,6 +63,7 @@ const Elements = styled.div`
   padding: 4px 16px;
   display: flex;
   flex-direction: row;
+  box-sizing: border-box;
   justify-content: flex-start;
   align-items: center;
   gap: 12px;
@@ -116,7 +117,7 @@ const Sidebar = ({ menuOpen, setMenuOpen, setDarkMode, darkMode }) => {
     <MenuContainer menuOpen={menuOpen}>
       <Flex>
         <Logo>
-          {/* <Image src={LogoImage} /> */}
+          <Image src={LogoImage} />
           iListen
         </Logo>
         <Close onClick={() => setMenuOpen(false)}>

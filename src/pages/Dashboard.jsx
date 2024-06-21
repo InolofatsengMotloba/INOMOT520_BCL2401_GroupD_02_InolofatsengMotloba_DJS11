@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { PodcastCard } from "../components/PodcastCard";
-import Slider from "react-slick";
+// import Slider from "react-slick";
 
 const DashboardMain = styled.div`
   padding: 20px 30px;
