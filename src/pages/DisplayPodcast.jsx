@@ -166,7 +166,13 @@ export const DisplayPodcast = () => {
   useEffect(() => {
     fetch("https://podcast-api.netlify.app/shows")
       .then((response) => response.json())
-      .then((data) => setPodcasts(data))
+      .then((data) => {
+        // Sort podcasts alphabetically by title
+        const sortedPodcasts = data.sort((a, b) =>
+          a.title.localeCompare(b.title)
+        );
+        setPodcasts(sortedPodcasts);
+      })
       .catch((error) => console.error("Error fetching data: ", error));
   }, []);
 
