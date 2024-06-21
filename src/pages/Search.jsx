@@ -5,8 +5,6 @@ import { Category } from "../utils/Data";
 import { DefaultCard } from "../components/DefaultCard";
 import { Link } from "react-router-dom";
 import { CircularProgress } from "@mui/material";
-import TopResult from "../components/TopResult";
-import MoreResult from "../components/MoreResult";
 
 const Searchmain = styled.div`
   padding: 20px 30px;

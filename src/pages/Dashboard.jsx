@@ -65,7 +65,7 @@ export const Dashboard = () => {
         <Topic>
           Podcasts
           <Link
-            to={`/showpodcasts/mostpopular`}
+            to={`/showpodcasts/podcasts`}
             style={{ textDecoration: "none" }}
           >
             <Span>Show All</Span>
