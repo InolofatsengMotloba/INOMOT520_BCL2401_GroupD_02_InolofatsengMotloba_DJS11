@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
+import { Category } from "../utils/Data";
+import { DefaultCard } from "../components/DefaultCard";
+import { Link } from "react-router-dom";
 
 const Searchmain = styled.div`
   padding: 20px 30px;
@@ -28,6 +31,23 @@ const SearchBar = styled.div`
   color: ${({ theme }) => theme.text_secondary};
 `;
 
+const Categories = styled.div`
+  margin: 20px 10px;
+`;
+const Heading = styled.div`
+  align-items: flex-start;
+  color: ${({ theme }) => theme.text_primary};
+  font-size: 22px;
+  font-weight: 540;
+  margin: 10px 14px;
+`;
+const BrowseAll = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 14px;
+`;
+
 export const Search = () => {
   const [searched, setSearched] = useState("");
 
@@ -52,7 +72,13 @@ export const Search = () => {
       {searched === "" ? (
         <Categories>
           <Heading>Browse All</Heading>
-          <BrowseAll></BrowseAll>
+          <BrowseAll>
+            {Category.map((category) => (
+              <Link to={`/showpodcasts/${category.name.toLowerCase}`} className="podcastLink">
+                <DefaultCard category={category} />
+              </Link>
+            ))}
+          </BrowseAll>
         </Categories>
       ) : (
         <>Hi</>

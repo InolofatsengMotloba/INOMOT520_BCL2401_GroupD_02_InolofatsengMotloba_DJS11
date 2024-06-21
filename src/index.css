@@ -36,3 +36,7 @@ body {
   background: inherit;
   color: inherit;
 }
+
+.podcastLink {
+  text-decoration: none;
+}
