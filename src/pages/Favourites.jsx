@@ -228,7 +228,10 @@ export const Favourites = () => {
   useEffect(() => {
     fetch("https://podcast-api.netlify.app/shows")
       .then((response) => response.json())
-      .then((data) => setPodcasts(data))
+      .then((data) => {
+        // Initial sorting when data is fetched
+        setPodcasts(data.sort((a, b) => a.title.localeCompare(b.title)));
+      })
       .catch((error) => console.error("Error fetching data: ", error));
   }, []);
 
@@ -247,9 +250,45 @@ export const Favourites = () => {
     });
   };
 
+  const sortAZ = () => {
+    setPodcasts([...podcasts].sort((a, b) => a.title.localeCompare(b.title)));
+  };
+
+  const sortZA = () => {
+    setPodcasts([...podcasts].sort((a, b) => b.title.localeCompare(a.title)));
+  };
+
+  const sortByRecent = () => {
+    setPodcasts(
+      [...podcasts].sort((a, b) => new Date(b.updated) - new Date(a.updated))
+    );
+  };
+
+  const sortByOldest = () => {
+    setPodcasts(
+      [...podcasts].sort((a, b) => new Date(a.updated) - new Date(b.updated))
+    );
+  };
+
   return (
     <Container>
-      <Topic>Favourites</Topic>
+      <Topic>
+        Favourites 
+        <div className="sortingContainer">
+          <button onClick={sortAZ} className="sortingBtn">
+            Sort A-Z
+          </button>
+          <button onClick={sortZA} className="sortingBtn">
+            Sort Z-A
+          </button>
+          <button onClick={sortByRecent} className="sortingBtn">
+            Recently Updated
+          </button>
+          <button onClick={sortByOldest} className="sortingBtn">
+            Furthest Updated
+          </button>
+        </div>
+      </Topic>
       <FavouriteContainer>
         {favourites.map((podcast) => (
           <DisplayPodcast
@@ -276,7 +315,3 @@ export const Favourites = () => {
 };
 
 export default Favourites;
-
-
-
-
