@@ -160,21 +160,41 @@ const Container = styled.div`
   overflow-y: auto;
 `;
 
+const LoadingMessage = styled.div`
+  font-size: 18px;
+  font-weight: bold;
+  color: ${({ theme }) => theme.text_primary || "#000"};
+  text-align: center;
+  margin-top: 20px;
+`;
+
 export const DisplayPodcast = () => {
   const [podcasts, setPodcasts] = useState([]);
+  const [loading, setLoading] = useState(true); // State to manage loading
 
   useEffect(() => {
     fetch("https://podcast-api.netlify.app/shows")
       .then((response) => response.json())
       .then((data) => {
-        // Sort podcasts alphabetically by title
-        const sortedPodcasts = data.sort((a, b) =>
-          a.title.localeCompare(b.title)
-        );
-        setPodcasts(sortedPodcasts);
+        // Simulating a delay to show loading indicator
+        setTimeout(() => {
+          // Sort podcasts alphabetically by title
+          const sortedPodcasts = data.sort((a, b) =>
+            a.title.localeCompare(b.title)
+          );
+          setPodcasts(sortedPodcasts);
+          setLoading(false); // Once data is fetched, set loading to false
+        }, 1500); // Adjust delay time as per your preference
       })
-      .catch((error) => console.error("Error fetching data: ", error));
+      .catch((error) => {
+        console.error("Error fetching data: ", error);
+        setLoading(false); // Ensure loading state is set to false on error
+      });
   }, []);
+
+  if (loading) {
+    return <LoadingMessage>Loading...</LoadingMessage>;
+  }
 
   return (
     <Container>
