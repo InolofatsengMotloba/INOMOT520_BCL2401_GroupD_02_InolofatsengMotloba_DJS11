@@ -11,6 +11,7 @@ import { Profile } from "./pages/Profile";
 import { PodcastDetails } from "./pages/PodcastDetails";
 import { DisplayPodcast } from "./pages/DisplayPodcast";
 
+// Styled component for elements of the application
 const Container = styled.div`
   display: flex;
   background: ${({ theme }) => theme.bgLight};
