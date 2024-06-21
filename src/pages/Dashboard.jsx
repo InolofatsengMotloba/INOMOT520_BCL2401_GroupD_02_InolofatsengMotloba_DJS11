@@ -248,6 +248,10 @@ export const Dashboard = () => {
     fetch("https://podcast-api.netlify.app/shows")
       .then((response) => response.json())
       .then((data) => {
+        // Sort podcasts alphabetically by title
+        const sortedPodcasts = data.sort((a, b) =>
+          a.title.localeCompare(b.title)
+        );
         setPodcasts(data.slice(0, 4));
         setRecommended(getRandomPodcasts(data, 4));
       })
