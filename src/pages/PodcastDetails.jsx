@@ -134,7 +134,7 @@ export const PodcastDetails = () => {
             />
             <SeasonTitle>{season.title}</SeasonTitle>
             <SeasonDescription>{season.description}</SeasonDescription>
-            <button onClick={() => handleSelectedSeason(index)}>
+            <button onClick={() => handleSelectedSeason(index)} className="episodeBtn">
               Open Episodes
             </button>
           </SeasonCard>
@@ -144,9 +144,11 @@ export const PodcastDetails = () => {
         <div>
           {selectedSeason.episodes.map((episode, index) => (
             <div key={index}>
-              <img src={episode.image} alt={`Episode ${episode.title} cover`} />
-              <h2>Selected Season: {episode.title}</h2>
-              <p>{episode.description}</p>
+              {/* <img src={episode.image} alt={`Episode ${episode.title} cover`} /> */}
+              <h2 className="episodeHeading">
+                {episode.episode} : {episode.title}
+              </h2>
+              <p className="episodeParagraph">{episode.description}</p>
             </div>
           ))}
         </div>
