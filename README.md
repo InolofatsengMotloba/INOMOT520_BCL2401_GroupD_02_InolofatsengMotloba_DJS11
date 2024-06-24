@@ -38,4 +38,7 @@ Other technologies included Javascript & CSS as well as React.
 ![alt text](public/images/Favourites.png)
 ![alt text](public/images/Theme.png)
 
+## Credits
+- Special thanks to ![Rishav Chanda](https://github.com/rishavchanda) for their invaluable YouTube video, which greatly helped in making this project possible.
+- To my friends, ![Omphile Morwane](https://github.com/OmphileMorwane) , ![Tumelo Mogono](https://github.com/Tumelo-Mogono-SE) & ![Neo Phetoane](https://github.com/NeoPhetoane), Thank you for all the support. It is greatly appreciated.
 
