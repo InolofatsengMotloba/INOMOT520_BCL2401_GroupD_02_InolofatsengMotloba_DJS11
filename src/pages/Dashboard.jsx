@@ -252,8 +252,8 @@ export const Dashboard = () => {
         const sortedPodcasts = data.sort((a, b) =>
           a.title.localeCompare(b.title)
         );
-        setPodcasts(data.slice(0, 4));
-        setRecommended(getRandomPodcasts(data, 4));
+        setPodcasts(data.slice(0, 5));
+        setRecommended(getRandomPodcasts(data));
       })
       .catch((error) => console.error("Error fetching data: ", error));
   }, []);
@@ -272,7 +272,12 @@ export const Dashboard = () => {
         </Topic>
         <Podcasts>
           {podcasts.map((podcast) => (
-            <DisplayPodcast key={podcast.id} podcast={podcast} />
+            <Link
+              to={`/podcast/${podcast.id}`}
+              style={{ textDecoration: "none" }}
+            >
+              <DisplayPodcast key={podcast.id} podcast={podcast} />
+            </Link>
           ))}
         </Podcasts>
       </FilterContainer>
@@ -289,7 +294,12 @@ export const Dashboard = () => {
         </Topic>
         <Podcasts>
           {recommended.map((podcast) => (
-            <DisplayPodcast key={podcast.id} podcast={podcast} />
+            <Link
+              to={`/podcast/${podcast.id}`}
+              style={{ textDecoration: "none" }}
+            >
+              <DisplayPodcast key={podcast.id} podcast={podcast} />
+            </Link>
           ))}
         </Podcasts>
       </FilterContainer>
